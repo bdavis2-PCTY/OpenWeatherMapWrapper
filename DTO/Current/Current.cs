@@ -19,7 +19,7 @@ namespace OpenWeatherMapWrapper.DTO.Current
         /// Current weather conditions of the location
         /// </summary>
         [JsonProperty("weather")]
-        public Weather Weather { get; set; }
+        public Weather[] Weather { get; set; }
 
         /// <summary>
         /// (Internal API use)

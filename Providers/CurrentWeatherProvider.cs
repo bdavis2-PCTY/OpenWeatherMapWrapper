@@ -7,7 +7,7 @@ namespace OpenWeatherMapWrapper.Providers
     /// Interacts with the OneCallAPI for OpenWeatherMap
     /// https://openweathermap.org/api/one-call-api
     /// </summary>
-    public class CurrentWeatherProvider : Provider<DTO.OneCallApi.OneCallApi>
+    public class CurrentWeatherProvider : Provider<DTO.Current.Current>
     {
         public CurrentWeatherProvider(Client pClient)
             : base(pClient) { }
@@ -24,7 +24,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// <param name="pState">Allows NULL</param>
         /// <param name="pCountryCode">Allows NULL</param>
         /// <returns></returns>
-        public async Task<DTO.OneCallApi.OneCallApi> GetByLocation(string pCity, string pState = null, string pCountryCode = null)
+        public async Task<DTO.Current.Current> GetByLocation(string pCity, string pState = null, string pCountryCode = null)
         {
             StringBuilder Location = new StringBuilder();
             Location.Append(pCity);
@@ -48,7 +48,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// </summary>
         /// <param name="pCityId"></param>
         /// <returns></returns>
-        public async Task<DTO.OneCallApi.OneCallApi> GetByCityId(int pCityId)
+        public async Task<DTO.Current.Current> GetByCityId(int pCityId)
         {
             string URL = $"{GetBaseUrl()}&id={pCityId}";
             return (await GetResult(URL));
@@ -59,7 +59,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// </summary>
         /// <param name="pCityId"></param>
         /// <returns></returns>
-        public async Task<DTO.OneCallApi.OneCallApi> GetByZipCodeCountryCode(string pZipCode, string pCountryCode)
+        public async Task<DTO.Current.Current> GetByZipCodeCountryCode(string pZipCode, string pCountryCode)
         {
             string URL = $"{GetBaseUrl()}&zip={pZipCode},{pCountryCode}";
             return (await GetResult(URL));
@@ -71,7 +71,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// <param name="pLatitude"></param>
         /// <param name="pLongitude"></param>
         /// <returns></returns>
-        public async Task<DTO.OneCallApi.OneCallApi> GetByLatLong(double pLatitude, double pLongitude)
+        public async Task<DTO.Current.Current> GetByLatLong(double pLatitude, double pLongitude)
         {
             string URL = $"{GetBaseUrl()}&lat={pLatitude}&lon={pLongitude}";
             return (await GetResult(URL));

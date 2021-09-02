@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenWeatherMapWrapper.Enums;
 using OpenWeatherMapWrapper.Extensions;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -26,12 +27,20 @@ namespace OpenWeatherMapWrapper.Providers
         /// <returns></returns>
         protected async Task<T> GetResult(string pURL)
         {
-            using (HttpClient HttpClient = new HttpClient())
+            try
             {
-                HttpResponseMessage Response = await HttpClient.GetAsync(pURL);
-                string Json = await Response.Content.ReadAsStringAsync();
-                T Deserialized = JsonConvert.DeserializeObject<T>(Json);
-                return Deserialized;
+                using (HttpClient HttpClient = new HttpClient())
+                {
+                    HttpResponseMessage Response = await HttpClient.GetAsync(pURL);
+                    string Json = await Response.Content.ReadAsStringAsync();
+                    T Deserialized = JsonConvert.DeserializeObject<T>(Json);
+                    return Deserialized;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("ERROR! " + ex.Message);
+                throw;
             }
         }
 
