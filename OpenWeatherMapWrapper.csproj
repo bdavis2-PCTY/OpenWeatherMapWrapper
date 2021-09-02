@@ -81,8 +81,8 @@
   <ItemGroup>
     <Compile Include="Attributes\QueryValueAttribute.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="DTO\Current\Snow.cs" />
-    <Compile Include="DTO\Current\Rain.cs" />
+    <Compile Include="DTO\Snow.cs" />
+    <Compile Include="DTO\Rain.cs" />
     <Compile Include="DTO\Current\Current.cs" />
     <Compile Include="DTO\Current\Clouds.cs" />
     <Compile Include="DTO\Current\Sys.cs" />

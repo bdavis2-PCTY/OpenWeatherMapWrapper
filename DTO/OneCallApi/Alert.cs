@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using OpenWeatherMapWrapper.Helpers;
+using System;
 
 namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
@@ -43,6 +45,19 @@ namespace OpenWeatherMapWrapper.DTO.OneCallApi
         /// </summary>
         [JsonProperty("tags")]
         public object Tags { get; set; }
+
+        #region Extra Properties
+
+        /// <summary>
+        /// Date and time when the alert ends in UTC
+        /// </summary>
+        [JsonIgnore]
+        public DateTime EndDateTimeUtc
+        {
+            get => DateTimeHelpers.UnixTimeStampToDateTime(EndTimeUnixUtc);
+        }
+
+        #endregion
 
         protected Alert()
         {

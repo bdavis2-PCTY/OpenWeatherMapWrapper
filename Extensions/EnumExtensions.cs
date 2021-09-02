@@ -14,10 +14,10 @@ namespace OpenWeatherMapWrapper.Extensions
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static QueryValueAttribute GetQueryValue(this Enum value)
+        public static string GetQueryValue(this Enum value)
         {
             var type = value.GetType();
-            return type.GetField(Enum.GetName(type, value)).GetCustomAttribute<QueryValueAttribute>();
+            return type.GetField(Enum.GetName(type, value)).GetCustomAttribute<QueryValueAttribute>()?.QueryValue ?? null;
         }
     }
 }

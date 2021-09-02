@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OpenWeatherMapWrapper.DTO.Current;
 using OpenWeatherMapWrapper.Helpers;
 using System;
 
@@ -80,13 +81,13 @@ namespace OpenWeatherMapWrapper.DTO.OneCallApi
         /// Precipitation volume, MM
         /// </summary>
         [JsonProperty("rain")]
-        public double? Rain { get; set; }
+        public Rain Rain { get; set; }
 
         /// <summary>
         /// Snow volume, MM
         /// </summary>
         [JsonProperty("snow")]
-        public double? Snow { get; set; }
+        public Snow Snow { get; set; }
 
         /// <summary>
         /// The current weather

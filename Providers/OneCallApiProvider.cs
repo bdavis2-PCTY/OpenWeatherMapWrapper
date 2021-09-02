@@ -14,7 +14,7 @@ namespace OpenWeatherMapWrapper.Providers
     public class OneCallApiProvider : Provider<DTO.OneCallApi.OneCallApi>
     {
         /// <summary>
-        /// The Unix Utc timestamp to be used to indicate current
+        /// The timestamp to be used to indicate current time
         /// </summary>
         private const int CURRENT_TIMESTAMP = -1;
 
@@ -32,7 +32,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// </summary>
         /// <param name="pLatitude"></param>
         /// <param name="pLongitude"></param>
-        /// <param name="pTimestamp">The DateTime in Unix Utc for the date to pull data for</param>
+        /// <param name="pTimestamp">The DateTime in Unix UTC for the date to pull data for</param>
         /// <param name="pExclusions"></param>
         /// <returns></returns>
         public async Task<DTO.OneCallApi.OneCallApi> GetByLatLong(double pLatitude, double pLongitude, long pTimestamp, ExclusionEnum[] pExclusions)
@@ -47,7 +47,7 @@ namespace OpenWeatherMapWrapper.Providers
 
             // Inject timestamp (if available)
             // https://openweathermap.org/api/one-call-api#history
-            if (pTimestamp > CURRENT_TIMESTAMP)
+            if (pTimestamp != CURRENT_TIMESTAMP)
             {
                 URL += "&dt=" + pTimestamp;
             }
@@ -61,7 +61,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// </summary>
         /// <param name="pLatitude"></param>
         /// <param name="pLongitude"></param>
-        /// <param name="pTimestamp">The DateTime in Utc for the date to pull data for</param>
+        /// <param name="pTimestamp">The DateTime in UTC for the date to pull data for</param>
         /// <param name="pExclusions"></param>
         /// <returns></returns>
         public async Task<DTO.OneCallApi.OneCallApi> GetByLatLong(double pLatitude, double pLongitude, DateTime pTimestamp, ExclusionEnum[] pExclusions)
@@ -88,7 +88,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// </summary>
         /// <param name="pLatitude"></param>
         /// <param name="pLongitude"></param>
-        /// <param name="pTimestamp">The DateTime in Unix Utc for the date to pull data for</param>
+        /// <param name="pTimestamp">The DateTime in Unix UTC for the date to pull data for</param>
         /// <returns></returns>
         public async Task<DTO.OneCallApi.OneCallApi> GetByLatLong(double pLatitude, double pLongitude, long pTimestamp)
         {
@@ -101,7 +101,7 @@ namespace OpenWeatherMapWrapper.Providers
         /// </summary>
         /// <param name="pLatitude"></param>
         /// <param name="pLongitude"></param>
-        /// <param name="pTimestamp">The DateTime in Utc for the date to pull data for</param>
+        /// <param name="pTimestamp">The DateTime in UTC for the date to pull data for</param>
         /// <returns></returns>
         public async Task<DTO.OneCallApi.OneCallApi> GetByLatLong(double pLatitude, double pLongitude, DateTime pTimestamp)
         {
@@ -109,7 +109,7 @@ namespace OpenWeatherMapWrapper.Providers
         }
 
         /// <summary>
-        /// Gets the provider data by latitude and longitude.
+        /// Gets the provider data by latitude and longitude
         /// </summary>
         /// <param name="pLatitude"></param>
         /// <param name="pLongitude"></param>
