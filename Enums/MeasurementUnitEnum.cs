@@ -1,4 +1,4 @@
-﻿using System;
+﻿using OpenWeatherMapWrapper.Attributes;
 
 namespace OpenWeatherMapWrapper.Enums
 {
@@ -8,33 +8,13 @@ namespace OpenWeatherMapWrapper.Enums
     /// </summary>
     public enum MeasurementUnitEnum
     {
+        [QueryValue("standard")]
         Standard = 0,
+
+        [QueryValue("metric")]
         Metric = 1,
+
+        [QueryValue("imperial")]
         Imperial = 2
-    }
-
-    /// <summary>
-    /// Adds a .GetQueryParam() to the exclusion enum values
-    /// This is used to build the URLs
-    /// </summary>
-    public static class MeasurementUnitEnumExtensions
-    {
-        public static string GetQueryParam(this MeasurementUnitEnum pValue)
-        {
-            switch (pValue)
-            {
-                case MeasurementUnitEnum.Standard:
-                    return "standard";
-
-                case MeasurementUnitEnum.Metric:
-                    return "metric";
-
-                case MeasurementUnitEnum.Imperial:
-                    return "imperial";
-
-                default:
-                    throw new NotImplementedException();
-            }
-        }
     }
 }

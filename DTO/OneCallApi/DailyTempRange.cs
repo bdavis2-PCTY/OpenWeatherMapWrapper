@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OpenWeatherMapWrapper.DTO
+namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
     /// <summary>
     /// Represents the different temperatures of a day

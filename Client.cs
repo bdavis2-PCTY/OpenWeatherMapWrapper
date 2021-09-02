@@ -1,6 +1,5 @@
 ﻿using OpenWeatherMapWrapper.Enums;
 using OpenWeatherMapWrapper.Providers;
-using System;
 
 namespace OpenWeatherMapWrapper
 {
@@ -12,23 +11,18 @@ namespace OpenWeatherMapWrapper
         private readonly string _apiKey;
 
         /// <summary>
-        /// Creates a new client instance using an API key.
-        /// Uses Standard as the measurement unit.
-        /// </summary>
-        /// <param name="pApiKey"></param>
-        public Client(string pApiKey)
-            : this(pApiKey, MeasurementUnitEnum.Standard) { }
-
-        /// <summary>
-        /// Creates a new client instance using an API key and a measurement unit.
+        /// Creates a new client instance using an API key, measurement unit, and language
         /// </summary>
         /// <param name="pApiKey"></param>
         /// <param name="pMeasurementUnit"></param>
-        public Client(string pApiKey, MeasurementUnitEnum pMeasurementUnit)
+        /// <param name="pLanguage"></param>
+        public Client(string pApiKey, MeasurementUnitEnum pMeasurementUnit = MeasurementUnitEnum.Standard, LanguageEnum pLanguage = LanguageEnum.English)
         {
             _apiKey = pApiKey;
             MeasurementUnit = pMeasurementUnit;
+            Language = pLanguage;
         }
+
 
         /// <summary>
         /// Gets the API key to be used
@@ -55,6 +49,11 @@ namespace OpenWeatherMapWrapper
         /// </summary>
         public MeasurementUnitEnum MeasurementUnit { get; set; }
 
+        /// <summary>
+        /// Language to use for API response
+        /// </summary>
+        public LanguageEnum Language { get; set; }
+
         #endregion Optional Settings
 
         #region Providers
@@ -65,18 +64,21 @@ namespace OpenWeatherMapWrapper
         /// </summary>
         public OneCallApiProvider OneCallApi
         {
-            get
-            {
-                if (_oneCallApi == null)
-                {
-                    _oneCallApi = new OneCallApiProvider(this);
-                }
-
-                return _oneCallApi;
-            }
+            get => (_oneCallApiProvider == null ? _oneCallApiProvider = new OneCallApiProvider(this) : _oneCallApiProvider);
         }
 
-        private OneCallApiProvider _oneCallApi = null;
+        private OneCallApiProvider _oneCallApiProvider = null;
+
+        /// <summary>
+        /// Interact with Current Weather API
+        /// https://openweathermap.org/current
+        /// </summary>
+        public CurrentWeatherProvider CurrentWeather
+        {
+            get => (_currentWeatherProvider == null ? _currentWeatherProvider = new CurrentWeatherProvider(this) : _currentWeatherProvider);
+        }
+
+        private CurrentWeatherProvider _currentWeatherProvider = null;
 
         #endregion Providers
     }

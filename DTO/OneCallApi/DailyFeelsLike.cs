@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OpenWeatherMapWrapper.DTO
+namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
     /// <summary>
     /// Represents the human temperature feeling for different parts of the day

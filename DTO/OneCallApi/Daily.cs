@@ -2,49 +2,47 @@
 using OpenWeatherMapWrapper.Helpers;
 using System;
 
-namespace OpenWeatherMapWrapper.DTO
+namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
     /// <summary>
     /// Represents a daily object response
     /// </summary>
     public class Daily
     {
-        #region JSON properties
-
         /// <summary>
-        /// Current time, Unix, UTC
+        /// Current time, Unix UTC
         /// <see cref="DateTime"/>
         /// </summary>
         [JsonProperty("dt")]
-        public long DateTimeUnixUTC { get; set; }
+        public long DateTimeUnixUtc { get; set; }
 
         /// <summary>
-        /// Sunrise time, Unix, UTC
+        /// Sunrise time, Unix UTC
         /// <see cref="SunriseDateTime"/>
         /// </summary>
         [JsonProperty("sunrise")]
-        public long SunriseUnixUTC { get; set; }
+        public long SunriseUnixUtc { get; set; }
 
         /// <summary>
-        /// Sunset time, Unix, UTC
+        /// Sunset time, Unix UTC
         /// <see cref="SunsetDateTime"/>
         /// </summary>
         [JsonProperty("sunset")]
-        public long SunsetUnixUTC { get; set; }
+        public long SunsetUnixUtc { get; set; }
 
         /// <summary>
-        /// Sunrise time, Unix, UTC
+        /// Sunrise time, Unix UTC
         /// <see cref="MoonriseDateTime"/>
         /// </summary>
         [JsonProperty("moonrise")]
-        public long MoonriseUnixUTC { get; set; }
+        public long MoonriseUnixUtc { get; set; }
 
         /// <summary>
-        /// Sunset time, Unix, UTC
+        /// Sunset time, Unix UTC
         /// <see cref="SunsetDateTime"/>
         /// </summary>
         [JsonProperty("moonset")]
-        public long MoonsetUnixUTC { get; set; }
+        public long MoonsetUnixUtc { get; set; }
 
         /// <summary>
         /// Represents the phase of the moon between 0 and 1
@@ -137,44 +135,42 @@ namespace OpenWeatherMapWrapper.DTO
         [JsonProperty("weather")]
         public Weather[] Weather { get; set; }
 
-        #endregion JSON properties
-
-        #region Extra properties
+        #region Extra Properties
 
         /// <summary>
-        /// DateTimeUnixUTC converted to a DateTime object
-        /// <see cref="DateTimeUnixUTC"/>
+        /// DateTimeUnixUtc converted to a DateTime object
+        /// <see cref="DateTimeUnixUtc"/>
         /// </summary>
         [JsonIgnore]
-        public DateTime DateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(DateTimeUnixUTC); }
+        public DateTime DateTimeUtc { get => DateTimeHelpers.UnixTimeStampToDateTime(DateTimeUnixUtc); }
 
         /// <summary>
-        /// SunriseUnixUTC converted to a DateTime object
-        /// <see cref="SunriseUnixUTC"/>
+        /// SunriseUnixUtc converted to a DateTime object
+        /// <see cref="SunriseUnixUtc"/>
         /// </summary>
         [JsonIgnore]
-        public DateTime SunriseDateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(SunriseUnixUTC); }
+        public DateTime SunriseDateTimeUtc { get => DateTimeHelpers.UnixTimeStampToDateTime(SunriseUnixUtc); }
 
         /// <summary>
-        /// SunsetUnixUTC converted to a DateTime object
-        /// <see cref="SunsetUnixUTC"/>
+        /// SunsetUnixUtc converted to a DateTime object
+        /// <see cref="SunsetUnixUtc"/>
         /// </summary>
         [JsonIgnore]
-        public DateTime SunsetDateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(SunsetUnixUTC); }
+        public DateTime SunsetDateTimeUtc { get => DateTimeHelpers.UnixTimeStampToDateTime(SunsetUnixUtc); }
 
         /// <summary>
-        /// MoonriseUnixUTC converted to a DateTime object
-        /// <see cref="MoonriseUnixUTC"/>
+        /// MoonriseUnixUtc converted to a DateTime object
+        /// <see cref="MoonriseUnixUtc"/>
         /// </summary>
         [JsonIgnore]
-        public DateTime MoonriseDateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(MoonriseUnixUTC); }
+        public DateTime MoonriseDateTimeUtc { get => DateTimeHelpers.UnixTimeStampToDateTime(MoonriseUnixUtc); }
 
         /// <summary>
-        /// MoonsetUnixUTC converted to a DateTime object
-        /// <see cref="MoonsetUnixUTC"/>
+        /// MoonsetUnixUtc converted to a DateTime object
+        /// <see cref="MoonsetUnixUtc"/>
         /// </summary>
         [JsonIgnore]
-        public DateTime MoonsetDateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(MoonsetUnixUTC); }
+        public DateTime MoonsetDateTimeUtc { get => DateTimeHelpers.UnixTimeStampToDateTime(MoonsetUnixUtc); }
 
         /// <summary>
         /// Wind direction as a cardinal direction
@@ -182,7 +178,7 @@ namespace OpenWeatherMapWrapper.DTO
         [JsonIgnore]
         public Enums.CardinalDirectionEnum WindDirection { get => Helpers.DirectionHelper.GetCardinalDirectionFromDegree(WindDirectionDegree); }
 
-        #endregion Extra properties
+        #endregion Extra Properties
 
         protected Daily()
         {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace OpenWeatherMapWrapper.DTO
+namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
     /// <summary>
     /// Represents a Minutely object response
@@ -9,11 +9,11 @@ namespace OpenWeatherMapWrapper.DTO
     public class Minutely
     {
         /// <summary>
-        /// Time of the forecasted data, Unix, UTC
+        /// Time of the forecasted data, Unix UTC
         /// <see cref="DateTime"/>
         /// </summary>
         [JsonProperty("dt")]
-        public long DateTimeUnixUTC { get; set; }
+        public long DateTimeUnixUtc { get; set; }
 
         /// <summary>
         /// Precipitation volume, mm
@@ -21,15 +21,19 @@ namespace OpenWeatherMapWrapper.DTO
         [JsonProperty("precipitation")]
         public long Precipitation { get; set; }
 
+        #region Extra Properties
+
         /// <summary>
-        /// DateTimeUnixUTC property converted to DateTime
-        /// <see cref="DateTimeUnixUTC"/>
+        /// DateTimeUnixUtc property converted to DateTime
+        /// <see cref="DateTimeUnixUtc"/>
         /// </summary>
         [JsonIgnore]
         public DateTime DateTime
         {
-            get => new DateTime(DateTimeUnixUTC);
+            get => new DateTime(DateTimeUnixUtc);
         }
+
+        #endregion Extra Properties
 
         protected Minutely()
         {

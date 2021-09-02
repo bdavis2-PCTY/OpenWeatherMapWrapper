@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OpenWeatherMapWrapper.DTO
+namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
     /// <summary>
     /// OneCallAPI response DTO object

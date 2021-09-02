@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OpenWeatherMapWrapper.DTO
+namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
     /// <summary>
     /// Represents a national weather alert
@@ -21,16 +21,16 @@ namespace OpenWeatherMapWrapper.DTO
         public string EventName { get; set; }
 
         /// <summary>
-        /// Start date and time of the alert in Unix, UTC
+        /// Start date and time of the alert in Unix UTC
         /// </summary>
         [JsonProperty("start")]
-        public long StartTimeUnixUTC { get; set; }
+        public long StartTimeUnixUtc { get; set; }
 
         /// <summary>
-        /// End date and time of the alert in Unix, UTC
+        /// End date and time of the alert in Unix UTC
         /// </summary>
         [JsonProperty("end")]
-        public long EndTimeUnixUTC { get; set; }
+        public long EndTimeUnixUtc { get; set; }
 
         /// <summary>
         /// Description of the alert

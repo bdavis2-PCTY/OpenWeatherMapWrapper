@@ -2,21 +2,33 @@
 using OpenWeatherMapWrapper.Helpers;
 using System;
 
-namespace OpenWeatherMapWrapper.DTO
+namespace OpenWeatherMapWrapper.DTO.OneCallApi
 {
     /// <summary>
-    /// Represents an Hourly object response
+    /// Represents a Current object response
     /// </summary>
-    public class Hourly
+    public class Current
     {
-        #region JSON properties
-
         /// <summary>
-        /// Current time, Unix, UTC
+        /// Current time, Unix UTC
         /// <see cref="DateTime"/>
         /// </summary>
         [JsonProperty("dt")]
-        public long DateTimeUnixUTC { get; set; }
+        public long DateTimeUnixUtc { get; set; }
+
+        /// <summary>
+        /// Sunrise time, Unix UTC
+        /// <see cref="SunriseDateTime"/>
+        /// </summary>
+        [JsonProperty("sunrise")]
+        public long SunriseUnixUtc { get; set; }
+
+        /// <summary>
+        /// Sunset time, Unix UTC
+        /// <see cref="SunsetDateTime"/>
+        /// </summary>
+        [JsonProperty("sunset")]
+        public long SunsetUnixUtc { get; set; }
 
         /// <summary>
         /// Temperature
@@ -53,6 +65,12 @@ namespace OpenWeatherMapWrapper.DTO
         /// </summary>
         [JsonProperty("clouds")]
         public double CloudPercentage { get; set; }
+
+        /// <summary>
+        /// Current UV Index
+        /// </summary>
+        [JsonProperty("uvi")]
+        public double UVIndex { get; set; }
 
         /// <summary>
         /// Average visibility
@@ -96,16 +114,28 @@ namespace OpenWeatherMapWrapper.DTO
         [JsonProperty("weather")]
         public Weather[] Weather { get; set; }
 
-        #endregion JSON properties
-
-        #region Extra properties
+        #region Extra Properties
 
         /// <summary>
-        /// DateTimeUnixUTC converted to a DateTime object
-        /// <see cref="DateTimeUnixUTC"/>
+        /// DateTimeUnixUtc converted to a DateTime object
+        /// <see cref="DateTimeUnixUtc"/>
         /// </summary>
         [JsonIgnore]
-        public DateTime DateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(DateTimeUnixUTC); }
+        public DateTime DateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(DateTimeUnixUtc); }
+
+        /// <summary>
+        /// SunriseUnixUtc converted to a DateTime object
+        /// <see cref="SunriseUnixUtc"/>
+        /// </summary>
+        [JsonIgnore]
+        public DateTime SunriseDateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(SunriseUnixUtc); }
+
+        /// <summary>
+        /// SunsetUnixUtc converted to a DateTime object
+        /// <see cref="SunsetUnixUtc"/>
+        /// </summary>
+        [JsonIgnore]
+        public DateTime SunsetDateTime { get => DateTimeHelpers.UnixTimeStampToDateTime(SunsetUnixUtc); }
 
         /// <summary>
         /// Wind direction as a cardinal direction
@@ -113,9 +143,9 @@ namespace OpenWeatherMapWrapper.DTO
         [JsonIgnore]
         public Enums.CardinalDirectionEnum WindDirection { get => Helpers.DirectionHelper.GetCardinalDirectionFromDegree(WindDirectionDegree); }
 
-        #endregion Extra properties
+        #endregion Extra Properties
 
-        protected Hourly()
+        protected Current()
         {
         }
     }

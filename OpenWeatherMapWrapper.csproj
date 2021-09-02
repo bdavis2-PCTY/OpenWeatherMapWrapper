@@ -79,17 +79,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\QueryValueAttribute.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="DTO\Alert.cs" />
-    <Compile Include="DTO\Daily.cs" />
-    <Compile Include="DTO\DailyFeelsLike.cs" />
-    <Compile Include="DTO\DailyTempRange.cs" />
-    <Compile Include="DTO\Hourly.cs" />
+    <Compile Include="DTO\Current\Snow.cs" />
+    <Compile Include="DTO\Current\Rain.cs" />
+    <Compile Include="DTO\Current\Current.cs" />
+    <Compile Include="DTO\Current\Clouds.cs" />
+    <Compile Include="DTO\Current\Sys.cs" />
+    <Compile Include="DTO\Current\Wind.cs" />
+    <Compile Include="DTO\Current\Main.cs" />
+    <Compile Include="DTO\OneCallApi\Alert.cs" />
+    <Compile Include="DTO\Coordinate.cs" />
+    <Compile Include="DTO\OneCallApi\Daily.cs" />
+    <Compile Include="DTO\OneCallApi\DailyFeelsLike.cs" />
+    <Compile Include="DTO\OneCallApi\DailyTempRange.cs" />
+    <Compile Include="DTO\OneCallApi\Hourly.cs" />
     <Compile Include="Enums\CardinalDirectionEnum.cs" />
+    <Compile Include="Enums\LanguageEnum.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Helpers\DateTimeHelpers.cs" />
-    <Compile Include="DTO\Current.cs" />
-    <Compile Include="DTO\Minutely.cs" />
-    <Compile Include="DTO\OneCallApi.cs" />
+    <Compile Include="DTO\OneCallApi\Current.cs" />
+    <Compile Include="DTO\OneCallApi\Minutely.cs" />
+    <Compile Include="DTO\OneCallApi\OneCallApi.cs" />
     <Compile Include="DTO\Weather.cs" />
     <Compile Include="Enums\ExclusionEnum.cs" />
     <Compile Include="Enums\MeasurementUnitEnum.cs" />
@@ -102,5 +113,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
